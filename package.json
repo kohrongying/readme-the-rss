@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "ava",
     "build": "ncc build index.js"
   },
   "repository": {
@@ -21,6 +21,10 @@
   "dependencies": {
     "@actions/core": "^1.2.4",
     "@actions/github": "^4.0.0",
-    "@zeit/ncc": "^0.22.3"
+    "@zeit/ncc": "^0.22.3",
+    "rss-parser": "^3.9.0"
+  },
+  "devDependencies": {
+    "ava": "^3.11.1"
   }
 }
