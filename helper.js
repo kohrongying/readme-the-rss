@@ -15,20 +15,13 @@ const formatToMarkdown = (feed, num) => {
 }
 
 const replaceMd = (filepath, newContent) => {
-  fs.readFile(filepath, "utf8", (err, data) => {
-    const fileContents = data.toString()
-    const newFileContent = spliceMd(fileContents, newContent)
+  const data = fs.readFileSync(filepath, {encoding: "utf8", flag: 'r'})
+  const fileContents = data.toString()
 
-    fs.writeFile(filepath, newFileContent, (err) => {
-      if (err) {
-        return console.log(err)
-      }
-      console.log('File is saved')
-    })
-    // write to filepath
-  })
-  // return toReturn
-  // return fileContent
+  const newFileContent = spliceMd(fileContents, newContent)
+  console.log('Splicing complete')
+  
+  fs.writeFileSync(filepath, newFileContent)
 }
 
 const spliceMd = (oldContent, postsMd) => {
@@ -37,7 +30,7 @@ const spliceMd = (oldContent, postsMd) => {
   if (startIndex > 0 && endIndex > 0) {
     const start = oldContent.slice(0, startIndex + START_ANNOTATION.length)
     const end = oldContent.slice(endIndex)
-    return start + postsMd + end
+    return start + '\n' + postsMd + end
   } else {
     return oldContent
   }

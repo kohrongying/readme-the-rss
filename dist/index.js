@@ -258,17 +258,14 @@ const main = async() => {
     const feedURL = core.getInput('feed_url');
     console.log(`Getting RSS Feed url: ${feedURL}!`);
     const feed = await getRSSFeed(feedURL)
-    console.log(`Got the feed`)
 
+    console.log(`Formatting feed to md!`);
     const mdFeed = formatToMarkdown(feed, 5)
-    console.log(`Formatting feed to md: ${mdFeed}!`);
-    
 
     console.log(`Writing to readme`);
     await replaceMd('README.md', mdFeed)
+    
     console.log(`Written to readme`);
-
-
     
     // 1) use octokit/core to push changes
   //https://github.com/theboi/github-update-readme/blob/master/index.js
@@ -1252,15 +1249,11 @@ const formatToMarkdown = (feed, num) => {
 const replaceMd = (filepath, newContent) => {
   const data = fs.readFileSync(filepath, {encoding: "utf8", flag: 'r'})
   const fileContents = data.toString()
-  console.log('oldcontent', fileContents)
 
   const newFileContent = spliceMd(fileContents, newContent)
-  console.log('newfilecontent', newFileContent)
-
+  console.log('Splicing complete')
+  
   fs.writeFileSync(filepath, newFileContent)
-  console.log('File is saved')
-  // return toReturn
-  // return fileContent
 }
 
 const spliceMd = (oldContent, postsMd) => {
@@ -1269,7 +1262,7 @@ const spliceMd = (oldContent, postsMd) => {
   if (startIndex > 0 && endIndex > 0) {
     const start = oldContent.slice(0, startIndex + START_ANNOTATION.length)
     const end = oldContent.slice(endIndex)
-    return start + postsMd + end
+    return start + '\n' + postsMd + end
   } else {
     return oldContent
   }

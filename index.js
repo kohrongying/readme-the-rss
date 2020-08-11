@@ -10,33 +10,35 @@ const getRSSFeed = async (feedURL) => {
   return feed.items
 }
 
-try {
-  const feedURL = core.getInput('feed_url');
-  console.log(`Getting RSS Feed url: ${feedURL}!`);
-  const feed = getRSSFeed(feedURL)
+const main = async() => {
+  try {
+    const feedURL = core.getInput('feed_url');
+    console.log(`Getting RSS Feed url: ${feedURL}!`);
+    const feed = await getRSSFeed(feedURL)
 
-  const mdFeed = formatToMarkdown(feed, 5)
-  console.log(`Formatting feed to md: ${mdFeed}!`);
-  
+    console.log(`Formatting feed to md!`);
+    const mdFeed = formatToMarkdown(feed, 5)
 
-  console.log(`Writing to readme`);
-  replaceMd('README.md', mdFeed)
-  console.log(`Written to readme`);
+    console.log(`Writing to readme`);
+    await replaceMd('README.md', mdFeed)
+    
+    console.log(`Written to readme`);
+    
+    // 1) use octokit/core to push changes
+  //https://github.com/theboi/github-update-readme/blob/master/index.js
 
-
-  
-  // 1) use octokit/core to push changes
-//https://github.com/theboi/github-update-readme/blob/master/index.js
-
-  // 2) write changes to readme file then use a push action in next
-//https://medium.com/analytics-vidhya/create-github-actions-and-be-smart-f1e6b9cc9bfa
-
+    // 2) write changes to readme file then use a push action in next
+  //https://medium.com/analytics-vidhya/create-github-actions-and-be-smart-f1e6b9cc9bfa
 
 
-  // Get the JSON webhook payload for the event that triggered the workflow
-  const payload = JSON.stringify(github.context.payload, undefined, 2)
-  console.log(`The event payload: ${payload}`);
-} catch (error) {
-  core.setFailed(error.message);
+
+    // Get the JSON webhook payload for the event that triggered the workflow
+    const payload = JSON.stringify(github.context.payload, undefined, 2)
+    console.log(`The event payload: ${payload}`);
+  } catch (error) {
+    core.setFailed(error.message);
+  }
+
 }
 
+main()
