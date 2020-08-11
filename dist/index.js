@@ -1254,8 +1254,9 @@ const replaceMd = (filepath, newContent) => {
 
   const newFileContent = spliceMd(fileContents, newContent)
   console.log('Splicing complete')
-  
+
   fs.writeFileSync(filepath, newFileContent)
+  console.log(newFileContent)
 }
 
 const spliceMd = (oldContent, postsMd) => {
