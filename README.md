@@ -7,5 +7,8 @@
 <!-- BLOGPOSTS:START -->
 <!-- BLOGPOSTS:END -->
 
-<!-->
+<!--
+How to run
+
 npm run build
+-->

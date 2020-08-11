@@ -257,6 +257,7 @@ try {
   const feedURL = core.getInput('feed_url');
   console.log(`Getting RSS Feed url: ${feedURL}!`);
   const feed = getRSSFeed(feedURL)
+  console.log(`Got the feed`, feed)
 
   const mdFeed = formatToMarkdown(feed, 5)
   console.log(`Formatting feed to md: ${mdFeed}!`);
