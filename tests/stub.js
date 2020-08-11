@@ -93,6 +93,7 @@ exports.newContent = `
 
 ### My latest ramblings
 <!-- BLOGPOSTS:START -->
+
 - [This is my title](http://example.com)
 - [This is my title](http://example.com)
 <!-- BLOGPOSTS:END -->

@@ -1,11 +1,6 @@
-// test if able to get the feed
-// test if able to extract out the title and URL
-
 const { items, oldContent, newContent, existingContent, noTags } = require('./stub')
-const { formatToMarkdown, replaceMd, spliceMd } = require('../helper')
+const { formatToMarkdown, spliceMd } = require('../helper')
 const test = require('ava');
-const fs = require('fs')
-
 
 test('Format to markdown with x number of posts', t => {
   const num = 5
