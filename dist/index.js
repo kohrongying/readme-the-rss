@@ -265,7 +265,7 @@ const main = async() => {
     
 
     console.log(`Writing to readme`);
-    replaceMd('README.md', mdFeed)
+    await replaceMd('README.md', mdFeed)
     console.log(`Written to readme`);
 
 
