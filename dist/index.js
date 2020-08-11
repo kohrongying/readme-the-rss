@@ -258,7 +258,7 @@ const main = async() => {
     const feedURL = core.getInput('feed_url');
     console.log(`Getting RSS Feed url: ${feedURL}!`);
     const feed = await getRSSFeed(feedURL)
-    console.log(`Got the feed`, feed)
+    console.log(`Got the feed`)
 
     const mdFeed = formatToMarkdown(feed, 5)
     console.log(`Formatting feed to md: ${mdFeed}!`);
@@ -1253,7 +1253,7 @@ const replaceMd = (filepath, newContent) => {
   fs.readFile(filepath, "utf8", (err, data) => {
     const fileContents = data.toString()
     const newFileContent = spliceMd(fileContents, newContent)
-
+    console.log('newfilecotent', newFileContent)
     fs.writeFile(filepath, newFileContent, (err) => {
       if (err) {
         return console.log(err)
