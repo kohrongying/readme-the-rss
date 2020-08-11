@@ -12,16 +12,17 @@ const getRSSFeed = async (feedURL) => {
 
 const main = async() => {
   try {
+    const count = core.getInput('count')
     const feedURL = core.getInput('feed_url');
     console.log(`Getting RSS Feed url: ${feedURL}!`);
     const feed = await getRSSFeed(feedURL)
 
     console.log(`Formatting feed to md!`);
-    const mdFeed = formatToMarkdown(feed, 5)
+    const mdFeed = formatToMarkdown(feed, count)
 
     console.log(`Writing to readme`);
     await replaceMd('README.md', mdFeed)
-    
+
     console.log(`Written to readme`);
     
     // 1) use octokit/core to push changes

@@ -10,6 +10,7 @@ jobs:
       uses: ./
       with:
         feed_url: https://blog.rongying.co/feed.xml
+        count: 3
     - name: Commit file changes
       run: |
           git config --global user.name 'kohrongying'

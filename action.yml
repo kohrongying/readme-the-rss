@@ -1,13 +1,21 @@
 name: 'README the RSS'
 description: 'Add your latest blog urls to your profile README'
+author: 'kohrongying'
 inputs:
   feed_url:
     description: 'The URL of the RSS feed'
     required: true
     default: ''
+  count:
+    description: 'Number of posts to display'
+    default: 5
+    required: false
 outputs:
   time: # id of output
     description: 'The time we greeted you'
 runs:
   using: 'node12'
   main: 'dist/index.js'
+branding:
+  icon: 'archive'
+  color: orange
