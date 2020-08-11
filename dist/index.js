@@ -1250,18 +1250,15 @@ const formatToMarkdown = (feed, num) => {
 }
 
 const replaceMd = (filepath, newContent) => {
-  fs.readFile(filepath, "utf8", (err, data) => {
-    const fileContents = data.toString()
-    const newFileContent = spliceMd(fileContents, newContent)
-    console.log('newfilecotent', newFileContent)
-    fs.writeFile(filepath, newFileContent, (err) => {
-      if (err) {
-        return console.log(err)
-      }
-      console.log('File is saved')
-    })
-    // write to filepath
-  })
+  const data = fs.readFileSync(filepath, {encoding: "utf8", flag: 'r'})
+  const fileContents = data.toString()
+  console.log('oldcontent', fileContents)
+
+  const newFileContent = spliceMd(fileContents, newContent)
+  console.log('newfilecontent', newFileContent)
+
+  fs.writeFileSync(filepath, newFileContent)
+  console.log('File is saved')
   // return toReturn
   // return fileContent
 }
