@@ -255,12 +255,13 @@ const getRSSFeed = async (feedURL) => {
 
 const main = async() => {
   try {
-    const count = core.getInput('count')
+    const count = Number.parseInt(core.getInput('count'))
     const feedURL = core.getInput('feed_url');
+
     console.log(`Getting RSS Feed url: ${feedURL}!`);
     const feed = await getRSSFeed(feedURL)
 
-    console.log(`Formatting feed to md!`);
+    console.log(`Formatting ${count} blog posts to md!`);
     const mdFeed = formatToMarkdown(feed, count)
 
     console.log(`Writing to readme`);
