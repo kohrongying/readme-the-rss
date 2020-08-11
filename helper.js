@@ -18,7 +18,14 @@ const replaceMd = (filepath, newContent) => {
   fs.readFile(filepath, "utf8", (err, data) => {
     const fileContents = data.toString()
     const newFileContent = spliceMd(fileContents, newContent)
-    // return data
+
+    fs.writeFile(filepath, newFileContent, (err) => {
+      if (err) {
+        return console.log(err)
+      }
+      console.log('File is saved')
+    })
+    // write to filepath
   })
   // return toReturn
   // return fileContent

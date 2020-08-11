@@ -1,10 +1,10 @@
-name: 'Hello World'
-description: 'Greet someone and record the time'
+name: 'README the RSS'
+description: 'Add your latest blog urls to your profile README'
 inputs:
-  who-to-greet:  # id of input
-    description: 'Who to greet'
+  feed_url:
+    description: 'The URL of the RSS feed'
     required: true
-    default: 'World'
+    default: ''
 outputs:
   time: # id of output
     description: 'The time we greeted you'
