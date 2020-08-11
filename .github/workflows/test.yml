@@ -17,7 +17,7 @@ jobs:
           git config --global user.name 'kohrongying'
           git config --global user.email 'kohrongying@gmail.com'
           git add .
-          git commit -m "Update README"    
+          git diff --quiet --cached || git commit -m "Update README"    
     - name: Push changes
       uses: ad-m/github-push-action@master
       with:

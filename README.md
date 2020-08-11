@@ -33,12 +33,13 @@ jobs:
             git config --global user.name 'YOUR_USERNAME'
             git config --global user.email 'YOUR_GMAIL'
             git add .
-            git commit -m "Update README"    
+            git diff --quiet --cached || git commit -m "Update README"    
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
 ```
+`git diff --quiet --cached` will exit with 1 (there is difference), else exit with 0 if no difference. 1 will trigger the commit.
 
 ## Arugments
 
