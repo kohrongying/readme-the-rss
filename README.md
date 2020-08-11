@@ -24,7 +24,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Get RSS Feed
-        uses: ./
+        uses: kohrongying/readme-the-rss@master
         with:
           feed_url: https://blog.rongying.co/feed.xml
           count: 6 # default 5
