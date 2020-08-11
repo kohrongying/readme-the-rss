@@ -10,6 +10,10 @@ inputs:
     description: 'Number of posts to display'
     default: 5
     required: false
+  readme_path:
+    description: 'Path to the readme file'
+    required: false
+    default: 'README.md'
 outputs:
   time: # id of output
     description: 'The time we greeted you'

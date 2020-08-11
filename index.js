@@ -14,6 +14,7 @@ const main = async() => {
   try {
     const count = Number.parseInt(core.getInput('count'))
     const feedURL = core.getInput('feed_url');
+    const readmePath = core.getInput('readme_path')
 
     console.log(`Getting RSS Feed url: ${feedURL}!`);
     const feed = await getRSSFeed(feedURL)
@@ -22,7 +23,7 @@ const main = async() => {
     const mdFeed = formatToMarkdown(feed, count)
 
     console.log(`Writing to readme`);
-    await replaceMd('README.md', mdFeed)
+    await replaceMd(readmePath, mdFeed)
 
     console.log(`Written to readme`);
     
