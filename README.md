@@ -7,9 +7,6 @@ Pulls your most recent blog posts through an RSS feed
 ```
 ## My Blog
 <!-- BLOGPOSTS:START -->
-- [Created an IG filter with PickerUI!](https://blog.rongying.co/posts/2020/08/Building-an-IG-filter-with-PickerUI/)
-- [Deploy deno with Github Actions](https://blog.rongying.co/posts/2020/08/Building-a-CICD-Pipeline-with-Github/)
-- [Learning Flutter - Implicit Animations](https://blog.rongying.co/posts/2020/07/Learning-Flutter---Implicit-Animations/)
 <!-- BLOGPOSTS:END -->
 ```
 * Create a file in `.github/workflows/blogposts.yml`
@@ -35,7 +32,7 @@ jobs:
         run: |
             git config --global user.name 'YOUR_USERNAME'
             git config --global user.email 'YOUR_GMAIL'
-            git add README.md
+            git add .
             git commit -m "Update README"    
       - name: Push changes
         uses: ad-m/github-push-action@master
@@ -49,11 +46,7 @@ jobs:
 |---|---|---|
 |`feed_url`|`""`|Required. RSS Url|
 |`count`   |`5`   |Number of posts to display   |
-
-
-## Demo
-<!-- BLOGPOSTS:START -->
-<!-- BLOGPOSTS:END -->
+|`readme_path`|`README.md`|Path to readme file|
 
 <!--
 How to run
