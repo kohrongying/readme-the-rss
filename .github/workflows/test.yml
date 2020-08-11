@@ -6,9 +6,17 @@ jobs:
     name: A job to say hello
     steps:
     - uses: actions/checkout@v2
-    - uses: ./
+    - name: Get RSS Feed
+      uses: ./
       with:
         feed_url: https://blog.rongying.co/feed.xml
-    - uses: ad-m/github-push-action@master
+    - name: Commit file changes
+      run: |
+          git config --global user.name 'kohrongying'
+          git config --global user.email 'kohrongying@gmail.com'
+          git add README.md
+          git commit -m "Update README"    
+    - name: Push changes
+      uses: ad-m/github-push-action@master
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
