@@ -25,6 +25,6 @@
     "rss-parser": "^3.9.0"
   },
   "devDependencies": {
-    "ava": "^3.11.1"
+    "ava": "^5.2.0"
   }
 }
