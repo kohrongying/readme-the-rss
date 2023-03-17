@@ -41,7 +41,7 @@ jobs:
 ```
 `git diff --quiet --cached` will exit with 1 (there is difference), else exit with 0 if no difference. 1 will trigger the commit.
 
-## Arugments
+## Arguments
 
 |Inputs | Default | Description    |
 |---|---|---|
