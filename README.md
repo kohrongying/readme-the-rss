@@ -22,24 +22,17 @@ jobs:
     name: Update with latest blog posts
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - name: Get RSS Feed
-        uses: kohrongying/readme-the-rss@master
+        uses: kohrongying/readme-the-rss@v2
         with:
           feed_url: https://blog.rongying.co/feed.xml
           count: 6 # default 5
-      - name: Commit file changes
-        run: |
-            git config --global user.name 'YOUR_USERNAME'
-            git config --global user.email 'YOUR_GMAIL'
-            git add .
-            git diff --quiet --cached || git commit -m "Update README"    
-      - name: Push changes
-        uses: ad-m/github-push-action@master
+      - name: Commit and push changes
+        uses: stefanzweifel/git-auto-commit-action@4a55954c782fc1ea30b9056cd3e7a2b40ca8887d # v7
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          commit_message: "Update README"
 ```
-`git diff --quiet --cached` will exit with 1 (there is difference), else exit with 0 if no difference. 1 will trigger the commit.
 
 ## Arugments
 

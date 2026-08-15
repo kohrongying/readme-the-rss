@@ -18,13 +18,15 @@
     "url": "https://github.com/kohrongying/readme-the-rss/issues"
   },
   "homepage": "https://github.com/kohrongying/readme-the-rss#readme",
+  "engines": {
+    "node": ">=20"
+  },
   "dependencies": {
-    "@actions/core": "^1.2.6",
-    "@actions/github": "^4.0.0",
-    "@zeit/ncc": "^0.22.3",
-    "rss-parser": "^3.9.0"
+    "@actions/core": "^2.0.3",
+    "rss-parser": "^3.13.0"
   },
   "devDependencies": {
-    "ava": "^3.11.1"
+    "@vercel/ncc": "^0.45.0",
+    "ava": "^6.4.1"
   }
 }

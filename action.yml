@@ -14,11 +14,8 @@ inputs:
     description: 'Path to the readme file'
     required: false
     default: 'README.md'
-outputs:
-  time: # id of output
-    description: 'The time we greeted you'
 runs:
-  using: 'node12'
+  using: 'node24'
   main: 'dist/index.js'
 branding:
   icon: 'archive'
