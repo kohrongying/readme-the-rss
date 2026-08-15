@@ -12,6 +12,10 @@ const main = async() => {
   try {
     const count = Number.parseInt(core.getInput('count'))
     const feedURL = core.getInput('feed_url');
+    const parsedURL = new URL(feedURL);
+    if (!['http:', 'https:'].includes(parsedURL.protocol)) {
+      throw new Error('feed_url must use http or https protocol');
+    }
     const readmePath = core.getInput('readme_path')
 
     console.log(`Getting RSS Feed url: ${feedURL}!`);
