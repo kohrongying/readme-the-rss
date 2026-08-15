@@ -22,7 +22,7 @@
     "node": ">=20"
   },
   "dependencies": {
-    "@actions/core": "^2.0.3",
+    "@actions/core": "^3.0.1",
     "rss-parser": "^3.13.0"
   },
   "devDependencies": {

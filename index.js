@@ -1,5 +1,3 @@
-const core = require('@actions/core');
-
 let Parser = require('rss-parser');
 let parser = new Parser();
 const { formatToMarkdown, replaceMd } = require('./helper')
@@ -10,6 +8,7 @@ const getRSSFeed = async (feedURL) => {
 }
 
 const main = async() => {
+  const core = await import(/* webpackMode: "eager" */ '@actions/core');
   try {
     const count = Number.parseInt(core.getInput('count'))
     const feedURL = core.getInput('feed_url');
