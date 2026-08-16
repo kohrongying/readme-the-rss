@@ -27,6 +27,6 @@
   },
   "devDependencies": {
     "@vercel/ncc": "^0.45.0",
-    "ava": "^6.4.1"
+    "ava": "^8.0.1"
   }
 }
